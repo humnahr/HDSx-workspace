@@ -1,6 +1,6 @@
 ---
 title: "My First Report"
-author: "Your Name"
+author: "Humnah Rashid"
 format:
   html:
     embed-resources: true
@@ -12,7 +12,7 @@ This is a **Quarto** document. It mixes ordinary writing with live code, so your
 report and your analysis always stay in sync. When you click **Render**, Quarto
 runs the code below and builds a finished HTML page.
 
-Try it now: change `author: "Your Name"` in the header above to your own name,
+Try it now: change `author: "Humnah Rashid"` in the header above to your own name,
 then click **Render**.
 
 ## A first look at the data
@@ -36,7 +36,7 @@ hist(patients$age,
 
 ## Your turn
 
-- Add a sentence here describing what you notice in the chart.
+- Most patients are concentrated in the middle age ranges, with fewer patients at the youngest and oldest ages.
 - Render again and check that both your sentence and the chart appear.
 
 When you are happy with the result, **commit and sync** your work (the Week 2
