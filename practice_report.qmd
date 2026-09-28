@@ -12,7 +12,7 @@ This is a **Quarto** document. It mixes ordinary writing with live code, so your
 report and your analysis always stay in sync. When you click **Render**, Quarto
 runs the code below and builds a finished HTML page.
 
-Try it now: change `author: "Humnah Rashid"` in the header above to your own name,
+Try it now: change `author: "Your Name"` in the header above to your own name,
 then click **Render**.
 
 ## A first look at the data
@@ -47,7 +47,7 @@ course page walks you through this), then submit your repository link on Canvas.
 nrow(patients)
 max(patients$age, na.rm = TRUE)
 min(patients$age, na.rm = TRUE)
-mean(patients$age, na.rm = TRUE)
+round(mean(patients$age, na.rm = TRUE))
 ```
 
 ## My Notes
