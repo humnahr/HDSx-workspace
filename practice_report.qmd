@@ -41,3 +41,17 @@ hist(patients$age,
 
 When you are happy with the result, **commit and sync** your work (the Week 2
 course page walks you through this), then submit your repository link on Canvas.
+
+## Patient Statistics
+```{r}
+nrow(patients)
+max(patients$age, na.rm = TRUE)
+min(patients$age, na.rm = TRUE)
+mean(patients$age, na.rm = TRUE)
+```
+
+## My Notes
+
+- I learned how the different parts of a Quarto file fit together and how rendering turns the source file into the final HTML report. **I also feel a lot more comfortable with the basic GitHub workflow now, especially saving changes, committing them, and syncing them back to my repository.**
+
+- AI helped me understand some of the course terminology, and I verified the changes by rendering the report and checking the updated HTML myself.
