@@ -1,0 +1,96 @@
+---
+title: "Assignment 2: Obesity Prevalence Analysis"
+format: html
+---
+
+## Setup
+
+```{r}
+#| message: false
+#| warning: false
+# AI prompt: Help me understand what library(tidyverse) does.
+# Verified: I ran the chunk and confirmed the package loaded without errors.
+library(tidyverse)  # AI-EDIT(2026-06-23): tidyverse-default — consolidated core library() calls into library(tidyverse)
+```
+The tidyverse loaded successfully and provides the tools used for importing, filtering, transforming, and summarizing the data.
+
+## Load Data
+
+```{r}
+# AI prompt: Help me understand how the NHANES data is loaded from a relative path.
+# Verified: I ran the chunk and confirmed the dataset loaded without errors.
+nhanes <- read_csv("examples/nhanes-equity/data/nhanes_equity_v6.csv", show_col_types = FALSE)
+```
+The NHANES dataset was loaded from the course repository using a relative path, so the analysis can run in another Codespace.
+
+## Inspect
+
+```{r}
+# AI prompt: Help me understand how to inspect the structure and missing values of the dataset.
+# Verified: I ran the chunk and confirmed that the dimensions, column names, and missing value counts were displayed correctly.
+dim(nhanes)
+names(nhanes)
+glimpse(nhanes)
+colSums(is.na(nhanes))
+```
+I noticed that some variables have a lot more missing values than others. BMI has 9,356 missing values and IncomeGroup has 9,415, while Age and Race have none. Since my question uses Age, BMI, IncomeGroup, and Race, I’m only keeping adults with the information I need instead of treating missing values like zero.
+
+## Summarize
+
+**Research question:** How does obesity prevalence vary across income and racial/ethnic groups among adults in NHANES?
+
+```{r}
+# AI prompt: Help me adapt the starter code to compare obesity prevalence across income and racial/ethnic groups among adults.
+# Verified: I checked the column names and ran the code to review the counts and obesity percentages.
+obesity_summary <- nhanes |>
+  filter(
+  Age >= 18,
+  !is.na(BMI),
+  !is.na(IncomeGroup),
+  !is.na(Race)
+) |>
+mutate(
+  Obese = BMI >= 30
+) |>
+group_by(IncomeGroup, Race) |>
+summarise(
+  n = n(),
+  obese_count = sum(Obese),
+  obesity_prevalence = mean(Obese) * 100,
+  .groups = "drop"
+)
+
+obesity_summary
+```
+The summary shows that obesity prevalence varies across both income and racial/ethnic groups. In this sample, non-Hispanic Black adults had some of the higher obesity percentages across the income groups. These results are descriptive, so I would not use them to say that income or race causes obesity.
+
+## Function
+
+```{r}
+# AI prompt: Help me understand and reuse a function that summarizes a numeric variable.
+# Verified: I ran the function on both BMI and Age and checked that it returned a count and mean for each.
+mean_with_n <- function(x) {
+  tibble(
+    n = sum(!is.na(x)),
+    mean = mean(x, na.rm = TRUE)
+  )
+}
+
+mean_with_n(nhanes$BMI)
+mean_with_n(nhanes$Age)
+```
+The function worked on both BMI and Age, showing that the same calculation can be reused for different numeric variables.
+
+## Save Output
+
+```{r}
+# AI prompt: Help me understand how to save my summary table as a CSV file.
+# Verified: I ran the chunk and confirmed summary_table.csv appeared in the output folder.
+dir.create("assignments/assignment02-r-with-ai/submission/output", recursive = TRUE, showWarnings = FALSE)
+write_csv(obesity_summary, "assignments/assignment02-r-with-ai/submission/output/summary_table.csv")
+```
+The obesity summary table was saved as output/summary_table.csv.
+
+## AI Audit Note
+
+AI was used to help me understand the starter code, refine my research question, and clarify some of the R steps. I verified the results by running each code chunk in R, checking the outputs, and confirming that the summary table was saved correctly.
