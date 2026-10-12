@@ -9,5 +9,9 @@ I checked `.gitignore` and confirmed that temporary Quarto files, operating-syst
 ## AI-use sentence
 I used ChatGPT to help me understand the Assignment 3 workflow and draft the evidence wording. I reviewed the Git diff myself and confirmed that the description accurately reflects the changes I made.
 
+AI output used: “Added one documentation-only sentence to clarify the purpose of the course repository. I reviewed the diff and confirmed that no unrelated files or code changes were included.”
+
+I verified this description by reviewing the Git diff myself.
+
 ## M0 readiness
 Our group members are Yoon Park (@yoon-cloud-28), Morgan Ehman (@m-ehman), Jade Lee (@Jade-ok), and Humnah Rashid (@humnahr). The shared group repository has been created, and I can access both the repository and the group Codespace. We are communicating through our WhatsApp group chat and coordinating the M0 work there.
