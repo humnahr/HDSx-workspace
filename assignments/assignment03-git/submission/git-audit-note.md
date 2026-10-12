@@ -10,4 +10,4 @@ I checked `.gitignore` and confirmed that temporary Quarto files, operating-syst
 I used ChatGPT to help me understand the Assignment 3 workflow and draft the evidence wording. I reviewed the Git diff myself and confirmed that the description accurately reflects the changes I made.
 
 ## M0 readiness
-Our group repository has been created and I can access the shared repository and Codespace. Our group is communicating through our group chat and coordinating the M0 work there.
+Our group members are Yoon Park (@yoon-cloud-28), Morgan Ehman (@m-ehman), Jade Lee (@Jade-ok), and Humnah Rashid (@humnahr). The shared group repository has been created, and I can access both the repository and the group Codespace. We are communicating through our WhatsApp group chat and coordinating the M0 work there.
