@@ -17,3 +17,4 @@ original starter unchanged and place your edited work in that assignment's
 
 Run and render from the repository root. Required rendered artifacts must be
 committed with their source files.
+This repository contains my course work and Git practice for SPPH 381H.
