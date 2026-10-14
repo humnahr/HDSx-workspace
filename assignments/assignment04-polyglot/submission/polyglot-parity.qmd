@@ -64,4 +64,14 @@ race_summary <- summarise_mean_sd(nhanes, BMI, Race, Gender)
 
 race_summary
 ```
+```{r}
+nrow(nhanes)
+ncol(nhanes)
+
+filtered_r <- nhanes |>
+  filter(!is.na(BMI), !is.na(IncomeGroup), !is.na(Gender))
+
+nrow(filtered_r)
+nrow(r_summary)
+```
 

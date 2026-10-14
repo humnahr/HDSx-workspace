@@ -1,0 +1,6 @@
+metric,r_value,python_value,match,notes
+raw_row_count,105626,105626,True,
+raw_column_count,18,18,True,
+filtered_row_count,87647,87647,True,
+number_of_groups,6,6,True,
+rounded_summary_values,Matches Python summary,Matches R summary,True,"IncomeGroup/Gender counts, means, and SDs agree after rounding to 2 decimals"
