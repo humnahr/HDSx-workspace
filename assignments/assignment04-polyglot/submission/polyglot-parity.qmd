@@ -64,6 +64,7 @@ race_summary <- summarise_mean_sd(nhanes, BMI, Race, Gender)
 
 race_summary
 ```
+
 ```{r}
 nrow(nhanes)
 ncol(nhanes)
@@ -73,5 +74,22 @@ filtered_r <- nhanes |>
 
 nrow(filtered_r)
 nrow(r_summary)
+
+sum(is.na(nhanes$BMI))
+r_summary |>
+  select(IncomeGroup, Gender)
 ```
 
+## Parity Discussion
+
+The R and Python workflows matched on the checks I compared. Both had 105626 rows and 18 columns in the original dataset, 9356 missing BMI values, and 87647 rows after filtering missing BMI, IncomeGroup, and Gender values.
+
+Both workflows also produced the same six IncomeGroup and Gender group labels in the same order. The group counts, mean BMI values, and standard deviations matched after rounding to two decimal places.
+
+## Rendered Output
+
+This document can be rendered with:
+
+`quarto render assignments/assignment04-polyglot/submission/polyglot-parity.qmd`
+
+The rendered HTML file is saved as `polyglot-parity.html` in the submission folder.

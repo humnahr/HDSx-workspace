@@ -1,6 +1,8 @@
 metric,r_value,python_value,match,notes
 raw_row_count,105626,105626,True,
 raw_column_count,18,18,True,
+missing_bmi_count,9356,9356,True,Both languages have 9356 missing BMI values
 filtered_row_count,87647,87647,True,
 number_of_groups,6,6,True,
+grouping_labels,High Female; High Male; Low Female; Low Male; Middle Female; Middle Male,High Female; High Male; Low Female; Low Male; Middle Female; Middle Male,True,IncomeGroup and Gender labels match in the same order
 rounded_summary_values,Matches Python summary,Matches R summary,True,"IncomeGroup/Gender counts, means, and SDs agree after rounding to 2 decimals"
