@@ -4,5 +4,5 @@ raw_column_count,18,18,True,
 missing_bmi_count,9356,9356,True,Both languages have 9356 missing BMI values
 filtered_row_count,87647,87647,True,
 number_of_groups,6,6,True,
-grouping_labels,High Female; High Male; Low Female; Low Male; Middle Female; Middle Male,High Female; High Male; Low Female; Low Male; Middle Female; Middle Male,True,IncomeGroup and Gender labels match in the same order
-rounded_summary_values,Matches Python summary,Matches R summary,True,"IncomeGroup/Gender counts, means, and SDs agree after rounding to 2 decimals"
+grouping_labels,High Income (>3.5) Female; High Income (>3.5) Male; Low Income (<1.3) Female; Low Income (<1.3) Male; Middle Income Female; Middle Income Male,High Income (>3.5) Female; High Income (>3.5) Male; Low Income (<1.3) Female; Low Income (<1.3) Male; Middle Income Female; Middle Income Male,True,IncomeGroup and Gender labels match in the same order
+rounded_summary_values,"High Female: n=11743, mean=25.74, SD=7.51; High Male: n=12095, mean=26.11, SD=6.81; Low Female: n=16548, mean=25.95, SD=8.65; Low Male: n=14847, mean=24.05, SD=7.17; Middle Female: n=16432, mean=26.39, SD=8.20; Middle Male: n=15982, mean=25.52, SD=7.22","High Female: n=11743, mean=25.74, SD=7.51; High Male: n=12095, mean=26.11, SD=6.81; Low Female: n=16548, mean=25.95, SD=8.65; Low Male: n=14847, mean=24.05, SD=7.17; Middle Female: n=16432, mean=26.39, SD=8.20; Middle Male: n=15982, mean=25.52, SD=7.22",True,"IncomeGroup/Gender counts, means, and SDs agree after rounding to 2 decimals"
