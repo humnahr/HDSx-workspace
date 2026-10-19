@@ -57,6 +57,8 @@ waist_summary <- summarise_mean_sd(nhanes, Waist, IncomeGroup, Gender)
 
 waist_summary
 ```
+The grouping labels stayed the same and the output still had six grouped rows. However, the group counts differed because Waist and BMI have different amounts of missing data.
+
 ## R Mastery Exercise 2
 
 ```{r}
@@ -64,10 +66,13 @@ race_summary <- summarise_mean_sd(nhanes, BMI, Race, Gender)
 
 race_summary
 ```
+This produced 10 grouped rows because there are five Race categories and two Gender categories, giving 5 × 2 combinations.
 
+## Parity Checks
 ```{r}
 nrow(nhanes)
 ncol(nhanes)
+names(nhanes)
 
 filtered_r <- nhanes |>
   filter(!is.na(BMI), !is.na(IncomeGroup), !is.na(Gender))
