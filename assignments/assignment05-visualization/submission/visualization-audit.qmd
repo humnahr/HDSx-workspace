@@ -1,0 +1,23 @@
+
+---
+title: "Assignment 5 — Visualization Audit"
+format: html
+---
+
+## Corrected BMI visualization
+
+```{r}
+# AI prompt: Help include the corrected BMI visualization in a Quarto report using the existing R script.
+# Verified: The corrected plot displayed in R and the HTML report rendered successfully in Codespaces.
+
+source("assignments/assignment05-visualization/submission/corrected-plot.R")
+
+bmi_plot
+```
+
+## What was changed
+
+The original graph only included the first and last NHANES cycles, so the changes between them weren't visible. The corrected graph includes the intermediate cycles and filters for adults aged 20–80.
+
+The causal title and fixed y-axis limits were also removed. The updated graph shows mean BMI rather than obesity prevalence and includes the exclusions and limitations.
+
