@@ -34,7 +34,7 @@
 
 **Why it matters:** Mean BMI values outside this range weren't displayed, so the graph didn't show the full comparison.
 
-**Correction:** Removed the fixed limits to display all calculated averages.
+**Correction:** Removed the fixed limits to display all calculated averages. The corrected graph still uses a narrower y-axis range to make differences in mean BMI easier to see, but the limits no longer cut off higher values.
 
 ### 5. Missing limitations
 **Category:** Interpretation
