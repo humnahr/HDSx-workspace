@@ -22,7 +22,7 @@ bmi_by_income_cycle <- nhanes |>
     mean_bmi = mean(BMI),
     .groups = "drop"
   ) |>
-    filter(n >= 30)
+  filter(n >= 30)
 
 # Corrected visualization: descriptive BMI by income group
 bmi_plot <- ggplot(
