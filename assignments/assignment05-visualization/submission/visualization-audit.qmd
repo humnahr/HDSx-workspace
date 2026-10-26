@@ -1,7 +1,8 @@
-
 ---
 title: "Assignment 5 — Visualization Audit"
 format: html
+execute:
+  root: project
 ---
 
 ## Corrected BMI visualization
@@ -11,6 +12,7 @@ format: html
 # Verified: The corrected plot displayed in R and the HTML report rendered successfully in Codespaces.
 
 source("assignments/assignment05-visualization/submission/corrected-plot.R")
+bmi_plot
 
 bmi_plot
 ```
