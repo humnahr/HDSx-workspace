@@ -1,0 +1,95 @@
+
+---
+title: "Assignment 6 — EDA and AI Audit"
+format: html
+---
+
+## Setup
+
+```{r}
+#|message: false
+library(tidyverse)
+library(knitr)
+
+options(pillar.sigfig = 4)
+
+nhanes <- read_csv(
+  "examples/nhanes-equity/data/nhanes_equity_v6.csv",
+  show_col_types = FALSE
+)
+
+glimpse(nhanes)
+
+```
+
+## Cohort
+
+We kept adults age 20-80 (inclusive) for the analysis.
+
+```{r}
+#| label: analysis-cohort
+# AI prompt: Filter adults aged 20-80 and show row counts
+# before and after the age restriction.
+# Verified: The filter includes both ages 20 and 80,
+# and cohort_counts shows the row counts at each step.
+analysis_df <- nhanes |>
+  filter(Age >= 20, Age <= 80)
+
+cohort_counts <- tibble(
+  step = c("Prepared CSV rows", "After age 20-80 restriction"),
+  row_count = c(nrow(nhanes), nrow(analysis_df))
+)
+
+cohort_counts
+```
+
+## Missingness
+
+```{r}
+#| label: missingness-table
+# AI prompt: Count missing values and calculate the percentage
+# missing for six variables in the adult cohort without dropping rows.
+# Verified: Missing counts matched a separate colSums(is.na())
+# check for all six variables.
+
+missingness <- analysis_df |>
+  select(BMI, Age, IncomeGroup, Gender, Race, Cycle) |>
+  summarise(across(everything(), ~ sum(is.na(.x)))) |>
+    pivot_longer(everything(), names_to = "Variable", values_to = "Missing") |>
+    mutate(Percentage_Missing = Missing / nrow(analysis_df) * 100)
+missingness
+```
+
+## Table 1
+```{r}
+#| label: table1
+# AI prompt: Create a Table 1 showing N, BMI mean (SD),
+# and age mean (SD) by income group.
+# Verified: Income group counts matched count(IncomeGroup).
+# BMI and age means and SDs matched separate
+# summarise() calculations for all three groups.
+mean_sd <- function(x) {
+  sprintf("%.1f (%.1f)", mean(x, na.rm = TRUE), sd(x, na.rm = TRUE))
+}
+
+table1 <- analysis_df |>
+  filter(!is.na(IncomeGroup)) |>
+  mutate(IncomeGroup = factor(
+    IncomeGroup,
+    levels = c("Low Income (<1.3)", "Middle Income", "High Income (>3.5)")
+  )) |>
+  group_by(IncomeGroup) |>
+  summarise(
+    N = n(),
+    'BMI, mean (SD)' = mean_sd(BMI),
+    'Age, mean (SD)' = mean_sd(Age),
+    .groups = "drop"
+  )
+write_csv(table1, "assignments/assignment06-eda-ai-audit/submission/table1.csv")
+kable(table1)
+```
+
+## Interpretation
+
+Table 1 summarizes the average BMI and age across income groups for adults aged 20–80. Missing values were checked before creating the table, and records without an income group were excluded. Since the analysis is descriptive and does not use survey weights, the results only reflect the prepared classroom dataset. Any differences between income groups do not necessarily mean that income causes changes in BMI or that the differences are statistically significant.
+
