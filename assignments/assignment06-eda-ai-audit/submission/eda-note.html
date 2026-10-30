@@ -2282,18 +2282,19 @@ $ WHtR           &lt;dbl&gt; 0.4989083, 0.5632184, 0.4736457, NA, 0.5602916, 0.5
 <h2 class="anchored" data-anchor-id="cohort">Cohort</h2>
 <p>We kept adults age 20-80 (inclusive) for the analysis.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># before and after the age restriction.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Verified: The filter includes both ages 20 and 80,</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and cohort_counts shows the row counts at each step.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> nhanes <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Age <span class="sc">&gt;=</span> <span class="dv">20</span>, Age <span class="sc">&lt;=</span> <span class="dv">80</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>cohort_counts <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">step =</span> <span class="fu">c</span>(<span class="st">&quot;Prepared CSV rows&quot;</span>, <span class="st">&quot;After age 20-80 restriction&quot;</span>),</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">row_count =</span> <span class="fu">c</span>(<span class="fu">nrow</span>(nhanes), <span class="fu">nrow</span>(analysis_df))</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>cohort_counts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AI prompt: Filter adults aged 20-80 and show row counts</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># before and after the age restriction.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Verified: The filter includes both ages 20 and 80,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and cohort_counts shows the row counts at each step.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>analysis_df <span class="ot">&lt;-</span> nhanes <span class="sc">|&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Age <span class="sc">&gt;=</span> <span class="dv">20</span>, Age <span class="sc">&lt;=</span> <span class="dv">80</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>cohort_counts <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">step =</span> <span class="fu">c</span>(<span class="st">&quot;Prepared CSV rows&quot;</span>, <span class="st">&quot;After age 20-80 restriction&quot;</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">row_count =</span> <span class="fu">c</span>(<span class="fu">nrow</span>(nhanes), <span class="fu">nrow</span>(analysis_df))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>cohort_counts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   step                        row_count
@@ -2391,9 +2392,10 @@ $ WHtR           &lt;dbl&gt; 0.4989083, 0.5632184, 0.4736457, NA, 0.5602916, 0.5
 </div>
 </div>
 </section>
-<section id="interpretation" class="level2">
-<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
-<p>Table 1 summarizes the average BMI and age across income groups for adults aged 20–80. Missing values were checked before creating the table, and records without an income group were excluded. Since the analysis is descriptive and does not use survey weights, the results only reflect the prepared classroom dataset. Any differences between income groups do not necessarily mean that income causes changes in BMI or that the differences are statistically significant.</p>
+<section id="methods-and-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="methods-and-interpretation">Methods and Interpretation</h2>
+<p>The analysis used the prepared NHANES Health Equity classroom dataset and included adults aged 20–80. Missing values were checked before creating Table 1. Records without an income group were excluded, while BMI and age averages were calculated using the available values for each variable.</p>
+<p>Table 1 summarizes the number of records, average BMI, and average age across the three income groups. Since the analysis is descriptive and unweighted, the results only reflect the prepared classroom dataset. Differences between income groups do not necessarily mean they are statistically significant or that income causes changes in BMI.</p>
 </section>
 
 </main>

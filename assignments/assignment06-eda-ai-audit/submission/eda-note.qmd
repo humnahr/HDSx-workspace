@@ -89,7 +89,11 @@ write_csv(table1, "assignments/assignment06-eda-ai-audit/submission/table1.csv")
 kable(table1)
 ```
 
-## Interpretation
 
-Table 1 summarizes the average BMI and age across income groups for adults aged 20–80. Missing values were checked before creating the table, and records without an income group were excluded. Since the analysis is descriptive and does not use survey weights, the results only reflect the prepared classroom dataset. Any differences between income groups do not necessarily mean that income causes changes in BMI or that the differences are statistically significant.
+## Methods and Interpretation
+
+The analysis used the prepared NHANES Health Equity classroom dataset and included adults aged 20–80. Missing values were checked before creating Table 1. Records without an income group were excluded, while BMI and age averages were calculated using the available values for each variable.
+
+Table 1 summarizes the number of records, average BMI, and average age across the three income groups. Since the analysis is descriptive and unweighted, the results only reflect the prepared classroom dataset. Differences between income groups do not necessarily mean they are statistically significant or that income causes changes in BMI.
+
 
