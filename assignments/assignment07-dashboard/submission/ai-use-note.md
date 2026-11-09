@@ -1,13 +1,35 @@
 # AI Use Note
 
-## How AI Was Used
+AI was used to help with the wording and documentation for Assignment 7. The main purpose was to make the dashboard easier to understand for its intended audience while keeping the original analysis unchanged. The suggestions were reviewed against the dashboard code, rendered output, and assignment instructions to make sure they accurately reflected the work completed.
 
-ChatGPT was used to help improve the wording of the dashboard's x-axis label and organize the Assignment 7 documentation, including the adaptation note, before-and-after explanation, and testing log.
+- **Dashboard Label**
 
-## Verification
+  **Prompt/Request:** Help make the x-axis label "NHANES cycle" easier to understand for readers who may not be familiar with NHANES, without changing the analysis.
 
-The suggested changes were checked against the original dashboard code and the rendered output. The x-axis label was updated from "NHANES cycle" to "Survey period (NHANES cycle)" to make it clearer for readers unfamiliar with NHANES.
+  **Verification:** The revised label, "Survey period (NHANES cycle)," was checked in the rendered graph. The original and revised code were also compared to confirm that the dataset, filtering, and BMI calculations remained unchanged.
 
-The dashboard was tested using Low Income and Middle Income selections. The updated graph showed the selected income group, and the revised label appeared correctly. The caption continued to describe the results as unweighted and descriptive.
+- **Adaptation and Before-and-After Notes**
 
-Only the audience-facing wording was changed. The dataset, cohort restrictions, and BMI calculations were kept the same.
+  **Prompt/Request:** Help organize the explanation of the intended audience, dashboard question, selected income group, visualization, and reason for changing the label.
+
+  **Verification:** The notes were reviewed alongside `dashboard.qmd` to make sure they accurately described the dashboard and the changes made.
+
+- **Testing and Reproducibility Notes**
+
+  **Prompt/Request:** Help document how the dashboard was rendered and tested in GitHub Codespaces.
+
+  **Verification:** The dashboard was tested using Low Income and Middle Income selections. The graph, title, and summary table were checked to confirm that they updated correctly. The render command and file paths were also reviewed. Testing in a fresh Codespace has not yet been completed.
+
+- **Limitation Note**
+
+  **Prompt/Request:** Help explain the limitations of the dashboard, including the unweighted data, y-axis scale, and gaps between certain NHANES survey periods, using clear academic wording.
+
+  **Verification:** The explanations were compared with the rendered graph and the concerns discussed during the Week 8 lecture. The wording was also checked to make sure it did not imply causation or generalize the results to the US population.
+
+- **Privacy Check**
+
+  **Prompt/Request:** Help write a short privacy statement based on the prepared NHANES classroom dataset and the assignment requirements.
+
+  **Verification:** The rendered dashboard was reviewed to confirm that it displayed aggregated participant counts and mean BMI values rather than individual records. The statement was also checked against the assignment's privacy guidelines.
+
+The prompts above summarize the main requests made to AI rather than reproduce them word for word. The final documentation was reviewed to make sure the information remained consistent with the dashboard and its limitations.
