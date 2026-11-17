@@ -1,0 +1,143 @@
+---
+title: "Average BMI Across Income Groups"
+format:
+  html:
+    embed-resources: true
+bibliography: references.bib
+---
+
+# Average BMI Across Income Groups
+
+## Purpose
+
+This report examines how average BMI differs across income groups among adults aged 20–80 in the prepared NHANES Health Equity classroom dataset. I used a summary table and visualization to look at these differences and better understand the patterns in the data. Since the analysis is descriptive and does not account for NHANES survey weights, the findings are intended to show patterns within this dataset rather than represent the US population.
+
+## Question
+
+How does mean BMI vary by income group among adults age 20-80 in the prepared NHANES Health Equity classroom dataset?
+
+## Data Source
+
+The report uses the cached CSV snapshot at `examples/nhanes-equity/data/nhanes_equity_v6.csv`. The source data are derived from CDC/NCHS NHANES public-use files [@cdc-nhanes].
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)  # AI-EDIT(2026-06-23): tidyverse-default — consolidated core library() calls into library(tidyverse)
+library(knitr)
+
+candidate_paths <- c(
+  "examples/nhanes-equity/data/nhanes_equity_v6.csv",
+  "../../examples/nhanes-equity/data/nhanes_equity_v6.csv",
+  "../../../examples/nhanes-equity/data/nhanes_equity_v6.csv"
+)
+
+data_path <- candidate_paths[file.exists(candidate_paths)][1]
+if (is.na(data_path)) {
+  stop("Could not find examples/nhanes-equity/data/nhanes_equity_v6.csv")
+}
+
+nhanes <- read_csv(data_path, show_col_types = FALSE)
+```
+
+## Methods
+
+I used the prepared NHANES Health Equity classroom dataset and restricted the analysis to adults aged 20–80. I first checked for missing values in BMI, income group, and age. For the comparison, I excluded records with missing BMI or income group values and calculated the number of participants, mean BMI, and standard deviation for each income group.
+
+The summary table and figure were generated using R. Since the analysis is unweighted and descriptive, the findings cannot be used to represent the US population or establish a causal relationship between income and BMI.
+
+```{r}
+analysis_df <- nhanes |>
+  filter(Age >= 20, Age <= 80)
+
+missingness <- analysis_df |>
+  summarise(
+    rows = n(),
+    missing_bmi = sum(is.na(BMI)),
+    missing_income = sum(is.na(IncomeGroup)),
+    missing_age = sum(is.na(Age))
+  )
+
+kable(missingness, caption = "Missingness check for key report variables.")
+```
+
+## Results
+
+```{r}
+income_summary <- analysis_df |>
+  filter(!is.na(BMI), !is.na(IncomeGroup)) |>
+  group_by(IncomeGroup) |>
+  summarise(
+    n = n(),
+    mean_bmi = mean(BMI),
+    sd_bmi = sd(BMI),
+    .groups = "drop"
+  ) |>
+  mutate(
+    `BMI, mean (SD)` = sprintf("%.1f (%.1f)", mean_bmi, sd_bmi)
+  ) |>
+  select(IncomeGroup, n, `BMI, mean (SD)`)
+
+kable(income_summary, caption = "Descriptive BMI summary by income group.")
+```
+
+```{r}
+#| fig-cap: "Mean BMI by income group among adults age 20-80 in the prepared NHANES Health Equity classroom dataset. Values are unweighted and descriptive."
+plot_df <- analysis_df |>
+  filter(!is.na(BMI), !is.na(IncomeGroup)) |>
+  group_by(IncomeGroup) |>
+  summarise(
+    n = n(),
+    mean_bmi = mean(BMI),
+    .groups = "drop"
+  )
+
+ggplot(plot_df, aes(x = IncomeGroup, y = mean_bmi)) +
+  geom_col(fill = "#2C7FB8") +
+  geom_text(aes(label = paste0("n=", n)), vjust = -0.4, size = 3.5) +
+  labs(
+    title = "Mean BMI by income group",
+    subtitle = "Adults age 20-80; unweighted descriptive summary",
+    x = "Income group",
+    y = "Mean BMI"
+  ) +
+  expand_limits(y = 0) +
+  theme_minimal(base_size = 12)
+```
+
+The results show some differences in average BMI across the three income groups. The low-income group had the highest mean BMI at 29.4, followed closely by the middle-income group at 29.3. The high-income group had a slightly lower mean BMI of 28.6.
+
+Although the differences between the groups were relatively small, the pattern suggests that BMI may vary with income in this dataset. However, the results alone cannot explain why these differences exist or whether income itself contributes to them. Other factors that were not examined in this analysis may also play a role.
+
+## Limitations
+
+Although the table and figure show differences in average BMI between income groups, there are some limitations to consider. This analysis uses a prepared classroom dataset and does not account for NHANES survey weights, so the findings cannot be used to represent the US population. Participants with missing BMI or income group values were also excluded, which may affect the patterns observed.
+
+The analysis also does not account for other factors that may be related to BMI, such as age differences, access to healthcare, or living conditions. Overall, the results can help identify patterns within the dataset, but they cannot explain what is causing those differences.
+
+## Plain-Language Summary
+
+The low-income group had a slightly higher average BMI (29.4) compared to the high-income group (28.6). The difference was relatively small, but it raises questions about how income and other social factors might relate to health.
+
+I think it's important to recognize that these findings only show a pattern within the classroom dataset. The results don't tell us why these differences exist or whether income itself plays a role. They do provide a starting point for understanding how health outcomes may differ across income groups.
+
+## AI-Use and Audit Note
+
+I used AI to help revise the wording of my report, organize my explanations, and check that my interpretation was consistent with the results. I also used AI to troubleshoot the relative file paths so the report could render correctly from the submission folder.
+
+The analysis was based on the instructor's provided R template. I checked the reported BMI values against the code-generated summary table in the rendered HTML report. I also reviewed the suggested wording to make sure the findings were presented as descriptive patterns rather than causal relationships. Finally, I revised the writing to keep it consistent with my own style.
+
+## Publishing Checklist
+
+- Report renders from source.
+- Citations resolve.
+- Figures and tables are generated by code.
+- Private preview is used unless the data, repository, and group privacy checks support public sharing.
+- Public preview contains no restricted data, private links, credentials, or sensitive row-level examples.
+- Staged files were reviewed before committing: no raw row-level data, credentials, `.RData` workspaces, or unrelated generated files. The required `report.html` remains staged with its source.
+- Private repository access is granted to course staff when needed.
+- Canvas submission includes the repository link, report path, and latest commit hash.
+
+## Grounding Audit Prompt
+
+Select three claims from the report. For each claim, write the supporting evidence source: code chunk, table, figure, or citation. Revise any claim that cannot be traced to evidence in the report.
