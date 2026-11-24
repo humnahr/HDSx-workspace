@@ -47,7 +47,7 @@ Further research could explore how access to healthcare, living conditions, and 
 
 Using survey weights and considering additional variables would also help provide a more complete understanding of these differences.
 
-## AI Use
+## AI Use {.smaller}
 
 AI helped me organize the slides and improve the wording. I reviewed the content against my corrected Assignment 5 visualization and caption to make sure the findings were accurate and the limitations were clearly explained. The original analysis and BMI calculations were not changed.
 
