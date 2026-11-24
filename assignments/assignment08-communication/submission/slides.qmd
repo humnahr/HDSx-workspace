@@ -47,6 +47,30 @@ Further research could explore how access to healthcare, living conditions, and 
 
 Using survey weights and considering additional variables would also help provide a more complete understanding of these differences.
 
-<hr>
 
-*AI-use disclosure: AI was used to help organize the slides and revise the wording. The findings and limitations were checked against the corrected Assignment 5 visualization and its caption.*
+## AI Use
+
+- AI helped me organize the slides and make the wording clearer.
+
+- I checked the explanations against my corrected Assignment 5 graph and caption.
+
+- I also reviewed the limitations to make sure the findings were not exaggerated.
+
+- The original analysis and BMI calculations were not changed.
+
+## References
+
+**Data Source**
+
+Centers for Disease Control and Prevention (CDC), National Center for Health Statistics (NCHS). *National Health and Nutrition Examination Survey (NHANES).* [@cdc-nhanes]
+
+::: {#refs}
+:::
+
+**Figure Source**
+
+Corrected Assignment 5 BMI visualization, based on the prepared NHANES Health Equity classroom dataset.
+
+**Original Analysis**
+
+`assignments/assignment05-visualization/submission/corrected-plot.R`
